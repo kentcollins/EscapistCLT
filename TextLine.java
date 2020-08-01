@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class TextLine {
+public class TextLine implements CharSequence{
 
 	char[] chars;
 
@@ -14,10 +14,6 @@ public class TextLine {
 	
 	TextLine(char[] chars) {
 		this.chars = chars;
-	}
-
-	public String toString() {
-		return new String(chars);
 	}
 
 	static TextLine shift(TextLine orig, int amount) {
@@ -45,6 +41,30 @@ public class TextLine {
 		System.out.println(shift(sample, 27));
 		System.out.println(shift(sample, -1));
 		System.out.println(shift(sample, -27));
+	}
+
+	@Override
+	public String toString() {
+		return new String(chars);
+	}
+
+	@Override
+	public int length() {
+		return chars.length;
+	}
+
+	@Override
+	public char charAt(int index) {
+		return chars[index];
+	}
+
+	@Override
+	public CharSequence subSequence(int start, int end) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = start; i<end; i++) {
+			sb.append(chars[i]);
+		}
+		return sb;
 	}
 
 }
