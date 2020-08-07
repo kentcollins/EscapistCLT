@@ -56,6 +56,8 @@ public class Escapist {
 			clearCipher();
 		} else if ("clear".equals(cmd)) {
 			charMap = new HashMap<>();
+		} else if ("charLoop".equals(cmd)) {
+			charLoop();
 		}
 
 		else if ("pd".equals(cmd)) {
@@ -75,6 +77,12 @@ public class Escapist {
 			System.exit(0);
 		} else {
 			System.out.println("unable to process: " + in);
+		}
+	}
+
+	private void charLoop() {
+		for ( char a = 'a'; a<='z'; a+=1) {
+			System.out.print(a);
 		}
 	}
 
